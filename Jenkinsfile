@@ -24,7 +24,7 @@ pipeline {
                    sh 'docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD'
 
 }
-                   sh 'docker push b3thr2/aziz
+                   sh 'docker push b3thr2/aziz'
 
                 }
             }
