@@ -13,18 +13,18 @@ pipeline {
         stage('Build docker image'){
             steps{
                 script{
-                    sh 'docker build -t azizdevops .'
+                    sh 'docker build -t azizdevops:3.0 .'
                 }
             }
         }
         stage('Push image to Hub'){
             steps{
                 script{
-                   withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
-                   sh 'docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD'
+                   withCredentials([usernamePassword(credentialsId: 'dockerhub-pwd', usernameVariable: 'USER' , passwordVariable: 'PASS')]) {
+                   sh 'docker login -u ${USER} -p ${PASS}'
 
 }
-                   sh 'docker push b3thr2/aziz'
+                   sh 'docker push azizdevops:3.0'
 
                 }
             }
